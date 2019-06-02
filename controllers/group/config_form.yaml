@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Group
+
+# Model Form Field configuration
+form: $/xitara/documentation/models/group/fields.yaml
+
+# Model Class name
+modelClass: Xitara\Documentation\Models\Group
+
+# Default redirect location
+defaultRedirect: xitara/documentation/group
+
+# Create page
+create:
+    title: Create Group
+    redirect: xitara/documentation/group/update/:id
+    redirectClose: xitara/documentation/group
+
+# Update page
+update:
+    title: Edit Group
+    redirect: xitara/documentation/group
+    redirectClose: xitara/documentation/group
+
+# Preview page
+preview:
+    title: Preview Group

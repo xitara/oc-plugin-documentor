@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Document
+
+# Model Form Field configuration
+form: $/xitara/documentation/models/document/fields.yaml
+
+# Model Class name
+modelClass: Xitara\Documentation\Models\Document
+
+# Default redirect location
+defaultRedirect: xitara/documentation/document
+
+# Create page
+create:
+    title: Create Document
+    redirect: xitara/documentation/document/update/:id
+    redirectClose: xitara/documentation/document
+
+# Update page
+update:
+    title: Edit Document
+    redirect: xitara/documentation/document
+    redirectClose: xitara/documentation/document
+
+# Preview page
+preview:
+    title: Preview Document

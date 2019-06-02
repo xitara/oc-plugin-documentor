@@ -1,0 +1,39 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: Id
+        type: number
+        width: 5%
+        align: center
+        searchable: true
+        sortable: true
+    name:
+        label: Name
+        type: text
+        width: 35%
+        searchable: true
+        sortable: true
+    groups:
+        label: Gruppen
+        type: relation
+        width: 30%
+        select: name
+        searchable: true
+        sortable: true
+    created_at:
+        label: Angelegt
+        type: datetime
+        width: 15%
+        align: center
+        searchable: true
+        sortable: true
+    updated_at:
+        label: Bearbeitet
+        type: datetime
+        width: 15%
+        align: center
+        searchable: true
+        sortable: true

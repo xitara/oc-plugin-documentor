@@ -1,0 +1,54 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: Name
+        type: text
+        span: auto
+    slug:
+        label: Slug
+        type: text
+        span: auto
+        preset:
+            field: name
+            type: slug
+    groups:
+        label: Gruppen
+        type: relation
+        span: auto
+    tags:
+        label: Tags
+        type: taglist
+        mode: relation
+        span: auto
+    description:
+        label: Beschreibung
+        commentAbove: 'Sondezeichen: * -> \* : # -> &amp;#35;'
+        type: markdown
+        size: giant
+        span: full
+        mode: split
+    var_list:
+        label: Variablenliste
+        type: repeater
+        form:
+            fields:
+                art:
+                    label: Art
+                    type: dropdown
+                    span: auto
+                    options:
+                        twig: Twig-Variable
+                        php: PHP-Variable
+                        js: Javascript-Variable
+                description:
+                    label: Beschreibung
+                    type: richeditor
+                    size: small
+                    span: auto
+                var:
+                    label: Variable
+                    type: text
+                    span: auto

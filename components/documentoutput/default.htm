@@ -1,0 +1,53 @@
+<h2>Dokumentationen</h2>
+<ul class="collapsible">
+    {% for key, document in documents %}
+        <li>
+            <div class="collapsible-header">
+                <i class="material-icons">whatshot</i>
+                {{ document.name }}
+
+                - Gruppe{% if document.groups|length != 1 %}n{% endif %}:
+                {% for group in document.groups %}
+                    {{ group.name }}{% if loop.last != true %}, {% endif %}
+                {% endfor %}
+
+                - Tag{% if document.tags|length != 1 %}s{% endif %}:
+                {% for tag in document.tags %}
+                    {{ tag.name }}{% if loop.last != true %}, {% endif %}
+                {% endfor %}
+            </div>
+            <div class="collapsible-body">
+                <span>{{ document.description|md|replace({'<pre>': '<pre class = "prettyprint linenums">'})|raw }}</span>
+                {% if document.var_list|length != 0 %}
+                    <p>
+                        Variable{% if document.var_list|length != 1 %}n{% endif %}: <br>
+                        {% for vars in document.var_list %}
+                            {% if vars.art == 'twig' %}
+                                {% verbatim %}{{{% endverbatim %}
+                            {% endif %}
+                            {{ vars.var }}
+                            {% if vars.art == 'twig' %}
+                                {% verbatim %}}}{% endverbatim %}
+                            {% endif %}
+                            {{ vars.description|md|replace({'<pre>': '<pre class = "prettyprint linenums">'})|raw }}
+                            {% if loop.last != true %}<hr>{% endif %}
+                        {% endfor %}
+                    </p>
+                {% endif %}
+                {% for image in document.images %}
+                    <a href="{{ image.path }}" data-fancybox="document-image">
+                        <img src="{{ image.thumb(200, auto) }}" alt="">
+                    </a>
+                {% endfor %}
+            </div>
+        </li>
+    {% endfor %}
+</ul>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var options = {};
+        var elems = document.querySelectorAll('.collapsible');
+        var instances = M.Collapsible.init(elems, options);
+    });
+</script>

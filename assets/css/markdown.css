@@ -1,0 +1,2 @@
+ul:not(.collapsible),ol{margin-bottom:.5rem}span>ul:not(.collapsible)>li p,span>ol>li p{margin:0;padding:0;padding-bottom:.5rem}ul:not(.collapsible)>li{list-style-type:disc !important;margin-left:2rem}ol>li{list-style-type:decimal !important}pre.prettyprint{margin:0 !important;border-radius:0 !important}
+/*# sourceMappingURL=markdown.css.map */

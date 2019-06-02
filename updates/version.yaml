@@ -1,0 +1,6 @@
+1.0.1:
+    - First version of Documentation
+    - create_documents_table.php
+    - create_groups_table.php
+    - seed_groups_table.php
+    - create_taglists_table.php
