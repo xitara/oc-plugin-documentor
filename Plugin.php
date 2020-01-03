@@ -1,6 +1,7 @@
 <?php namespace Xitara\Documentation;
 
 use Backend;
+use Event;
 use System\Classes\PluginBase;
 
 /**
@@ -40,7 +41,9 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
-
+        Event::listen('backend.page.beforeDisplay', function ($controller, $action, $params) {
+            $controller->addJs('/plugins/xitara/documentation/assets/js/insert-docs.js');
+        });
     }
 
     /**
@@ -52,6 +55,7 @@ class Plugin extends PluginBase
     {
         return [
             'Xitara\Documentation\Components\DocumentOutput' => 'documentoutput',
+            'Xitara\Documentation\Components\SingleDoc' => 'singledoc',
         ];
     }
 

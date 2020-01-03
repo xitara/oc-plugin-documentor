@@ -7,15 +7,18 @@ fields:
         label: Name
         type: text
         span: auto
-    slug:
-        label: Slug
-        type: text
+    namespace:
+        label: Komponente (optional)
+        comment: 'Beim Klick auf das Infozeichen in der Komponentenübersicht (CMS) wird diese Seite aufgerufen'
+        type: dropdown
+        # options:
+            # none: keine Komponente
         span: auto
-        preset:
-            field: name
-            type: slug
     groups:
         label: Gruppen
+        # relation: groups
+        nameFrom: name
+        descriptionFrom: description
         type: relation
         span: auto
     tags:
@@ -40,6 +43,7 @@ fields:
                     type: dropdown
                     span: auto
                     options:
+                        parameter: Parameter in Komponente
                         twig: Twig-Variable
                         php: PHP-Variable
                         js: Javascript-Variable
@@ -52,3 +56,10 @@ fields:
                     label: Variable
                     type: text
                     span: auto
+    slug:
+        label: Slug
+        type: text
+        span: auto
+        preset:
+            field: name
+            type: slug

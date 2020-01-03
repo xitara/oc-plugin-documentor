@@ -40,6 +40,22 @@
 
     <?= Form::close() ?>
 
+    <?php if (isset($namespace) && $namespace !== null): ?>
+        <script>
+            (function($) {
+                $(function() {
+                    'use strict';
+                    $('#Form-field-Document-namespace option').each(function () {
+                        if ($(this).val() == '<?= str_replace('\\', '\\\\', $namespace); ?>') {
+                            $(this).attr('selected', true);
+                            $(this).parent().trigger('change');
+                        }
+                    });
+                });
+            })(jQuery);
+        </script>
+    <?php endif; ?>
+
 <?php else: ?>
 
     <p class="flash-message static error"><?= e($this->fatalError) ?></p>

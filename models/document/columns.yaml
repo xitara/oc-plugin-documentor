@@ -18,7 +18,7 @@ columns:
         sortable: true
     groups:
         label: Gruppen
-        type: relation
+        relation: groups
         width: 30%
         select: name
         searchable: true

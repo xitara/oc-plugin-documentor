@@ -1,0 +1,46 @@
+{% if doc == null or doc.namespace == 'none' %}
+    bisher keine Dokumentation für {{ namespace }} angelegt. <br>
+    <a href="/backend/xitara/documentation/document/create/{{ namespace|url_encode }}">hier</a>
+    klicken um die Dokumentation anzulegen
+{% else %}
+    <h1>{{ doc.name }}</h1>
+
+    <div class="collapsible-header">
+        <i class="material-icons">whatshot</i>
+        {{ doc.name }}
+
+        - Gruppe{% if doc.groups|length != 1 %}n{% endif %}:
+        {% for group in doc.groups %}
+            {{ group.name }}{% if loop.last != true %}, {% endif %}
+        {% endfor %}
+
+        - Tag{% if doc.tags|length != 1 %}s{% endif %}:
+        {% for tag in doc.tags %}
+            {{ tag.name }}{% if loop.last != true %}, {% endif %}
+        {% endfor %}
+    </div>
+    <div class="collapsible-body">
+        <span>{{ doc.description|md|replace({'<pre>': '<pre class = "prettyprint linenums">'})|raw }}</span>
+        {% if doc.var_list|length != 0 %}
+            <p>
+                Variable{% if doc.var_list|length != 1 %}n{% endif %}: <br>
+                {% for vars in doc.var_list %}
+                    {% if vars.art == 'twig' %}
+                        {% verbatim %}{{{% endverbatim %}
+                    {% endif %}
+                    {{ vars.var }}
+                    {% if vars.art == 'twig' %}
+                        {% verbatim %}}}{% endverbatim %}
+                    {% endif %}
+                    {{ vars.description|md|replace({'<pre>': '<pre class = "prettyprint linenums">'})|raw }}
+                    {% if loop.last != true %}<hr>{% endif %}
+                {% endfor %}
+            </p>
+        {% endif %}
+        {% for image in doc.images %}
+            <a href="{{ image.path }}" data-fancybox="document-image">
+                <img src="{{ image.thumb(200, auto) }}" alt="">
+            </a>
+        {% endfor %}
+    </div>
+{% endif %}
