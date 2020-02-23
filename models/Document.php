@@ -62,9 +62,10 @@ class Document extends Model
 
                 if (method_exists($namespace, 'registerComponents')) {
                     $components = (new $namespace(false))->registerComponents();
-                    // var_dump($components);
 
-                    $a = array_merge($a, $components);
+                    foreach ($components as $namespace => $component) {
+                        $a = array_merge($a, [$namespace => $name . ' -> ' . $component]);
+                    }
                 }
             }
         }
