@@ -11,8 +11,6 @@ fields:
         label: Komponente (optional)
         comment: 'Beim Klick auf das Infozeichen in der Komponentenübersicht (CMS) wird diese Seite aufgerufen'
         type: dropdown
-        # options:
-            # none: keine Komponente
         span: auto
     groups:
         label: Gruppen
