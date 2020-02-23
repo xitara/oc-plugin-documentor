@@ -15,6 +15,7 @@ class CreateDocumentsTable extends Migration
             $table->string('slug', 255)->nullable();
             $table->text('description')->nullable();
             $table->mediumtext('var_list')->nullable();
+            $table->string('namespace', 511)->nullable();
             $table->timestamps();
         });
     }

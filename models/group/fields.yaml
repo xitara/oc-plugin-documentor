@@ -3,6 +3,10 @@
 # ===================================
 
 fields:
-    id:
-        label: ID
-        disabled: true
+    name:
+        label: Name
+        type: text
+    description:
+        label: Beschreibung
+        type: richeditor
+        size: huge
