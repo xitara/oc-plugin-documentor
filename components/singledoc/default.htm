@@ -5,22 +5,28 @@
 {% else %}
     <h1>{{ doc.name }}</h1>
 
-    <div class="collapsible-header">
-        <i class="material-icons">whatshot</i>
-        {{ doc.name }}
-
-        - Gruppe{% if doc.groups|length != 1 %}n{% endif %}:
-        {% for group in doc.groups %}
-            {{ group.name }}{% if loop.last != true %}, {% endif %}
-        {% endfor %}
-
-        - Tag{% if doc.tags|length != 1 %}s{% endif %}:
-        {% for tag in doc.tags %}
-            {{ tag.name }}{% if loop.last != true %}, {% endif %}
-        {% endfor %}
-    </div>
-    <div class="collapsible-body">
-        <span>{{ doc.description|md|replace({'<pre>': '<pre class = "prettyprint linenums">'})|raw }}</span>
+    <section class="collapsible-header">
+        {# <i class="material-icons">whatshot</i> #}
+        {# <h2>{{ doc.name }}</h2> #}
+        <p>
+            Plugin: {{ name }}
+            <br>
+            Namespace: {{ namespace }}
+        </p>
+        <p>
+            Gruppe{% if doc.groups|length != 1 %}n{% endif %}:
+            {% for group in doc.groups %}
+                {{ group.name }}{% if loop.last != true %}, {% endif %}
+            {% endfor %}
+            <br>
+            Tag{% if doc.tags|length != 1 %}s{% endif %}:
+            {% for tag in doc.tags %}
+                {{ tag.name }}{% if loop.last != true %}, {% endif %}
+            {% endfor %}
+        </p>
+    </section>
+    <section class="collapsible-body">
+        <p>{{ doc.description|md|replace({'<pre>': '<pre class = "prettyprint linenums">'})|raw }}</p>
         {% if doc.var_list|length != 0 %}
             <p>
                 Variable{% if doc.var_list|length != 1 %}n{% endif %}: <br>
@@ -42,5 +48,5 @@
                 <img src="{{ image.thumb(200, auto) }}" alt="">
             </a>
         {% endfor %}
-    </div>
+    </section>
 {% endif %}

@@ -21,6 +21,8 @@ class SingleDoc extends ComponentBase
     public function onRender()
     {
         $namespace = $this->param('namespace');
+        $parts = explode('\\', $namespace);
+        $this->page['name'] = $parts[0] . '.' . $parts[1];
         $this->page['namespace'] = $namespace;
         $this->page['doc'] = Document::where('namespace', $namespace)->first();
     }
